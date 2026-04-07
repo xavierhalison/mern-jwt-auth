@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
 import { login } from "../lib/api";
+import Input from "../components/Input";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,38 +24,42 @@ const Login = () => {
   });
 
   return (
-    <div className="full-page-container">
-      <div className="box">
-        <h2>Sign up into your account</h2>
-
+    <div className="flex justify-center items-center h-screen w-full">
+      <div className="flex flex-col border border-red-500 p-5">
+        <h1 className="text-3xl text-center font-bold">
+          Sign up into your account
+        </h1>
         {isError && <code>Invalid email or password</code>}
 
-        <div className="form-control">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+        <div className="flex flex-col my-5">
+          <div className="flex flex-col">
+            <label htmlFor="email">Email:</label>
+            <Input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={setEmail}
+            />
+            <input />
+          </div>
 
-        <div className="form-control">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && signIn({ email, password })}
-          />
+          <div className="flex flex-col">
+            <label htmlFor="password">Password:</label>
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={setPassword}
+              keyboardSubmit={() => signIn({ email, password })}
+            />
+          </div>
         </div>
 
         <Link to="/password/forgot">Forgot Password?</Link>
         <button
-          disabled={isPending}
+          disabled={!email || password.length < 6}
           onClick={() => signIn({ email, password })}
         >
           Sign In
