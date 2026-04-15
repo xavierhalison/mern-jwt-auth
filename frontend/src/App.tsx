@@ -7,17 +7,14 @@ import Register from "./modules/auth/Register";
 import VerifyEmail from "./modules/auth/VerifyEmail";
 import ForgotPassword from "./modules/auth/ForgotPassword";
 import ResetPassword from "./modules/auth/ResetPassword";
-
-const ProvisoryHome = () => {
-  return <h1>This home is provisory</h1>;
-};
+import Home from "./modules/app/Home";
 
 function App() {
   return (
     <>
       <Toast />
       <Routes>
-        <Route index element={<ProvisoryHome />}></Route>
+        <Route index element={<Home />}></Route>
 
         <Route element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
