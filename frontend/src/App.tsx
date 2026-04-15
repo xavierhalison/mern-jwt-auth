@@ -1,21 +1,33 @@
 import { Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import VerifyEmail from "./pages/VerifyEmail";
+import Toast from "./components/Toast";
+import AuthLayout from "./modules/auth/AuthLayout";
 import "./styles/global.css";
+import Login from "./modules/auth/Login";
+import Register from "./modules/auth/Register";
+import VerifyEmail from "./modules/auth/VerifyEmail";
+import ForgotPassword from "./modules/auth/ForgotPassword";
+import ResetPassword from "./modules/auth/ResetPassword";
 
-export const Home = () => {
-  return <div>a</div>;
+const ProvisoryHome = () => {
+  return <h1>This home is provisory</h1>;
 };
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/email/verify/:code" element={<VerifyEmail />} />
-    </Routes>
+    <>
+      <Toast />
+      <Routes>
+        <Route index element={<ProvisoryHome />}></Route>
+
+        <Route element={<AuthLayout />}>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="email/verify/:code" element={<VerifyEmail />} />
+          <Route path="password/forgot" element={<ForgotPassword />} />
+          <Route path="password/reset" element={<ResetPassword />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 

@@ -8,6 +8,12 @@ type AuthPayload = {
 
 type SignInPayload = Omit<AuthPayload, "confirmPassword">;
 
+type ForgotPasswordPayload = Pick<AuthPayload, "email">;
+
+type ResetPasswordPayload = Pick<AuthPayload, "password"> & {
+  verificationCode?: string;
+};
+
 export const login = async (data: SignInPayload) =>
   API.post("/auth/login", data);
 
@@ -16,3 +22,9 @@ export const register = async (data: AuthPayload) =>
 
 export const verifyEmail = async (verificationCode: string) =>
   API.get(`/auth/email/verify/${verificationCode}`);
+
+export const forgotPassword = async (data: ForgotPasswordPayload) =>
+  API.post("/auth/password/forgot", data);
+
+export const resetPassword = async (data: ResetPasswordPayload) =>
+  API.post("/auth/password/reset", data);

@@ -1,12 +1,9 @@
-import type React from "react";
+import type { ButtonHTMLAttributes } from "react";
 
-export type ButtonType = {
-  disabled: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-};
-
-const Button = ({ children, ...props }: ButtonType) => {
+const Button = ({
+  children,
+  ...props
+}: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return (
     <button
       className="bg-gray-500 text-white font-bold rounded-sm py-1 px-2 my-4 font-funnel hover:cursor-pointer hover:bg-gray-600"
