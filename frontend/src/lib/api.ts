@@ -28,3 +28,11 @@ export const forgotPassword = async (data: ForgotPasswordPayload) =>
 
 export const resetPassword = async (data: ResetPasswordPayload) =>
   API.post("/auth/password/reset", data);
+
+type SessionsResponse = {
+  _id: string;
+  userAgent: string;
+  createdAt: string;
+};
+
+export const getSessions = async () => API.get<SessionsResponse>("/sessions");

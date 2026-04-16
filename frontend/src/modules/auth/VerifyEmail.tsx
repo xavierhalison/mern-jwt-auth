@@ -14,7 +14,7 @@ const VerifyEmail = () => {
 
   return isPending ? (
     <span>loading...</span>
-  ) : isSuccess || true ? (
+  ) : isSuccess ? (
     <>
       <span className="text-center pt-2">Email verified successfully</span>
       <Button onClick={() => navigate("/")}>Go to App</Button>
