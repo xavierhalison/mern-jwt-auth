@@ -3,10 +3,8 @@ import { MONGO_URI } from "../constants/env";
 
 const connectToDatabase = async () => {
   try {
-    await mongoose.connect(MONGO_URI, {
-      user: "mongoadmin",
-      pass: "gandalf",
-    });
+    console.log("Connecting to database");
+    await mongoose.connect(MONGO_URI);
     console.log("Successfully connected to database");
   } catch (error) {
     console.log("Could not connect to database", error);
