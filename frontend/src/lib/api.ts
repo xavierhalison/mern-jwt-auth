@@ -1,3 +1,4 @@
+import type { AxiosResponse } from "axios";
 import API from "../config/apiClient";
 
 type AuthPayload = {
@@ -28,6 +29,17 @@ export const forgotPassword = async (data: ForgotPasswordPayload) =>
 
 export const resetPassword = async (data: ResetPasswordPayload) =>
   API.post("/auth/password/reset", data);
+
+export type UserResponse = {
+  _id: string;
+  email: string;
+  verified: boolean;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export const getUser = async () =>
+  API.get<AxiosResponse, UserResponse>("/user");
 
 type SessionsResponse = {
   _id: string;

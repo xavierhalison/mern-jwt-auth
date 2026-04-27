@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
 @import "tailwindcss";
 
-:root {
-    /* --font-funnel: "Funnel Display", sans-serif; */
-}
 
 @theme {
     --font-funnel: "Funnel Display", sans-serif;
-}
 
-* {
+    --color-moss: #82D173;
+    --color-light: #ABFAA9;
+    --color-cool: #95A3B3;
+    --color-indigo: #4C2C69;
+    --color-midnight: #42253B;
 }
+/**
+82d173-abfaa9-95a3b3-4c2c69-42253b
+*/
+
